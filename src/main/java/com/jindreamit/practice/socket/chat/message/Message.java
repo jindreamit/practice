@@ -25,7 +25,7 @@ public class Message {
 
     private Charset charset;
 
-    static private class Builder {
+    static public class Builder {
 
         private Builder() {
 
@@ -39,10 +39,11 @@ public class Message {
 
         public Builder message(String message){
             this.msg=message;
+            this.charset=StandardCharsets.UTF_8;
             return this;
         }
 
-        public Builder contentLength(Charset charset){
+        public Builder charset(Charset charset){
             this.charset=charset;
             return this;
         }
@@ -62,4 +63,11 @@ public class Message {
         return this.msg.getBytes(StandardCharsets.UTF_8);
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public Charset getCharset() {
+        return charset;
+    }
 }

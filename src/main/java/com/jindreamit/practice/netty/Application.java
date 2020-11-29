@@ -1,5 +1,7 @@
 package com.jindreamit.practice.netty;
 
+import com.jindreamit.practice.socket.chat.message.Message;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -18,6 +20,9 @@ public class Application {
             l=in.read(bytes);
             if (l<bytes.length)break;
         }
-        System.out.println(new String(bytes,0,l,StandardCharsets.UTF_8));
+        System.out.println(new String(bytes,0,l));
     }
+
+
+
 }

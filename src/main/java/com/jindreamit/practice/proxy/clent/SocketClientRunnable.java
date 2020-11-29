@@ -39,7 +39,10 @@ public class SocketClientRunnable implements Runnable {
                         port = line.split(BLANK_STR)[1].split(":")[1];
                     }
                 }
+
                 sb.append(line).append("\r\n");
+                sb.append("MY PROXY SERVER HEADER: TEST CONNECTION").append("\r\n");
+
                 line = bufferedReader.readLine();
             }
             System.out.println(sb.toString());
@@ -61,16 +64,24 @@ public class SocketClientRunnable implements Runnable {
                 proxyOut.write(sb.append("\r\n").toString().getBytes());
                 int l;
                 byte[] bytes = new byte[1024];
-                try {
-                    while (true) {
-                        l = proxyIn.read(bytes);
-                        System.out.println(l);
-                        clientOut.write(bytes, 0, l);
+                BufferedReader br=new BufferedReader(new InputStreamReader(proxyIn));
+                while ((line=br.readLine())!=null){
+                    System.out.println(line);
+                    if (br.readLine().equals("")){
+                        System.out.println(line);
                     }
-                } catch (Exception se) {
-                    se.printStackTrace();
-                    System.out.println("write success");
                 }
+
+//                try {
+//                    while (true) {
+//                        l = proxyIn.read(bytes);
+//                        System.out.println(l);
+//                        clientOut.write(bytes, 0, l);
+//                    }
+//                } catch (Exception se) {
+//                    se.printStackTrace();
+//                    System.out.println("write success");
+//                }
             }
 
         } catch (Exception e) {

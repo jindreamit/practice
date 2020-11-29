@@ -31,6 +31,12 @@ public class EchoServer {
                             ch.pipeline().addLast(new EchoServerHandler());
                         }
                     });
+            bootstrap.handler(new ChannelInitializer<NioServerSocketChannel>() {
+                @Override
+                protected void initChannel(NioServerSocketChannel nioServerSocketChannel) throws Exception {
+                    System.out.println("服务端启动中");
+                }
+            });
             ChannelFuture future=bootstrap.bind().sync();
             future.channel().closeFuture().sync();
         }catch (Exception e){

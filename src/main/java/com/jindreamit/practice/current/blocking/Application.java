@@ -27,7 +27,7 @@ public class Application {
         executorService.submit(p3);
         executorService.submit(p4);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         }catch (Exception e){
             e.printStackTrace();
         }

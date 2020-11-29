@@ -22,7 +22,7 @@ public class Consumer<T> implements Runnable{
             T model=this.storage.consume();
             System.out.println(this.name+" 消费成功: "+ model);
             try {
-                Thread.sleep(500);
+                Thread.sleep(300);
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
